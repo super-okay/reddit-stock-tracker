@@ -8,16 +8,18 @@ import { ApiService } from '../api.service';
 })
 export class HomePageComponent implements OnInit {
 
+  selectedTicker:string = "";
+
   constructor(private apiService:ApiService) { }
 
   ngOnInit(): void {
   }
 
   // gets stock price
-  getStockPrice() {
-    this.apiService.getStockPrice("GME").subscribe(
+  getStockPrice(selectedTicker:string) {
+    this.apiService.getStockPrice(selectedTicker).subscribe(
       (data:any) => {
-        window.alert(data);
+        window.alert(data.ticker);
       },
       (error:any) => {
         console.log("Error getting stock price: " + error);

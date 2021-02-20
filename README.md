@@ -9,6 +9,7 @@ Angular.
 ```
 cd frontend
 cd rst-frontend
+npm install
 npm start
 ```
 
@@ -17,5 +18,6 @@ Flask.
 
 ```
 cd backend
+source venv/bin/activate
 python3 -m flask run
 ```

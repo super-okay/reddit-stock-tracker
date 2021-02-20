@@ -4,4 +4,21 @@
 
 .main-header {
     text-align: center;
+    font-weight: 500;
+    margin-bottom: 2%;
+}
+
+.ticker-container {
+    margin: auto;
+    // width: 100%;
+    text-align: center;
+}
+
+mat-form-field.ticker-input {
+    font-size: 20px;
+  }
+
+.submit-button {
+    background-color: green;
+    color: white;
 }

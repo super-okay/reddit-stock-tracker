@@ -1,5 +1,15 @@
 <div class="main-container">
     <h1 class="main-header">Reddit Stock Tracker</h1>
-    <button mat-button (click)="getStockPrice()">Get $GME Stock Price</button>
+
+    <div class="ticker-container">
+        <div>
+            <mat-form-field class="ticker-input">
+                <mat-label>Ticker</mat-label>
+                <input matInput placeholder="Ex. GME" [(ngModel)]="selectedTicker">
+                <span matPrefix>$&nbsp;</span>
+            </mat-form-field>
+        </div>
+        <button mat-button class="submit-button" (click)="getStockPrice(selectedTicker)">Get Results</button>
+    </div>
 </div>
 
