@@ -8,3 +8,8 @@ Angular.
 
 ## Backend
 Flask.
+
+```
+cd backend
+python3 -m flask run
+```
