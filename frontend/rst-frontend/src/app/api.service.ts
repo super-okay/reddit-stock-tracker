@@ -8,13 +8,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ApiService {
 
-  url = "http://127.0.0.1:5000/"
+  url = "http://127.0.0.1:5000"
 
   constructor(private http:HttpClient) { }
 
   // gets current price of stock
   getStockPrice(ticker:string) {
-    return this.http.post(this.url+'/stocks', {ticker: ticker}).pipe(map(
+    return this.http.post(this.url+'/price', {ticker: ticker}).pipe(map(
       (data:any) => {
         return data;
       },

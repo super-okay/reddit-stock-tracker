@@ -6,6 +6,12 @@ Tracks prices of stocks mentioned on r/wallstreetbets against how often they are
 ## Frontend
 Angular.
 
+```
+cd frontend
+cd rst-frontend
+npm start
+```
+
 ## Backend
 Flask.
 
