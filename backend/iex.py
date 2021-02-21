@@ -9,3 +9,19 @@ data = response.json()
 print(data[0]["minute"])
 # data_formatted = json.dumps(data, indent=2)
 # print(data_formatted)
+
+# Example item in list
+#
+# {
+#     "date": "2021-02-19",
+#     "minute": "15:59",
+#     "label": "3:59 PM",
+#     "high": 129.945,
+#     "low": 129.815,
+#     "open": 129.88,
+#     "close": 129.815,
+#     "average": 129.885,
+#     "volume": 11861,
+#     "notional": 1540568.095,
+#     "numberOfTrades": 111
+# }

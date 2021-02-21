@@ -19,7 +19,7 @@ export class HomePageComponent implements OnInit {
   getStockPrice(selectedTicker:string) {
     this.apiService.getStockPrice(selectedTicker).subscribe(
       (data:any) => {
-        window.alert(data.ticker);
+        window.alert(data);
       },
       (error:any) => {
         console.log("Error getting stock price: " + error);
