@@ -12,7 +12,9 @@ CORS(app)
 def getPrice():
     params = request.json
     ticker = params["ticker"]
-    price_at_open = Stock.get_stock_data(ticker)
+    data_at_open = Stock.get_stock_data(ticker)
+    print("--------------------")
     print(ticker)
-    print(price_at_open)
-    return jsonify(price_at_open)
+    print(data_at_open)
+    print("--------------------")
+    return jsonify(data_at_open)

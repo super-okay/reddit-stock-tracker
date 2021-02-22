@@ -27,10 +27,11 @@ class Stock:
         full_intraday_url = base_intraday_url.format(ticker)
         response = requests.get(full_intraday_url)
         data = response.json()
-        print(data[0]["average"])
-        return data[0]["average"]
         # data_formatted = json.dumps(data, indent=2)
         # print(data_formatted)
+
+        # print(data[0]["average"])
+        return data[0]
 
     def test():
         return "Stock object in service file."

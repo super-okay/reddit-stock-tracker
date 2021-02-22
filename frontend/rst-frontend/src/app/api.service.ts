@@ -13,7 +13,7 @@ export class ApiService {
   constructor(private http:HttpClient) { }
 
   // gets current price of stock
-  getStockPrice(ticker:string) {
+  getStockDataAPI(ticker:string) {
     return this.http.post(this.url+'/price', {ticker: ticker}).pipe(map(
       (data:any) => {
         return data;

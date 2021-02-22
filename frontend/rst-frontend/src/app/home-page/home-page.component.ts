@@ -9,6 +9,9 @@ import { ApiService } from '../api.service';
 export class HomePageComponent implements OnInit {
 
   selectedTicker:string = "";
+  dataAtOpen:any;
+  priceAtOpen:string = "";
+  dateAtOpen:string = "";
 
   constructor(private apiService:ApiService) { }
 
@@ -16,10 +19,13 @@ export class HomePageComponent implements OnInit {
   }
 
   // gets stock price
-  getStockPrice(selectedTicker:string) {
-    this.apiService.getStockPrice(selectedTicker).subscribe(
+  getStockData(selectedTicker:string) {
+    this.apiService.getStockDataAPI(selectedTicker).subscribe(
       (data:any) => {
-        window.alert(data);
+        // window.alert(JSON.stringify(data));
+        this.dataAtOpen = data;
+        this.priceAtOpen = data.average;
+        this.dateAtOpen = data.date;
       },
       (error:any) => {
         console.log("Error getting stock price: " + error);

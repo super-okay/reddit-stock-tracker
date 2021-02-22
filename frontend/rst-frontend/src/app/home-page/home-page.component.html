@@ -9,7 +9,14 @@
                 <span matPrefix>$&nbsp;</span>
             </mat-form-field>
         </div>
-        <button mat-button class="submit-button" (click)="getStockPrice(selectedTicker)">Get Results</button>
+        <button mat-button class="submit-button" (click)="getStockData(selectedTicker)">Get Results</button>
+    </div>
+
+    <div fxLayoutAlign="center none" class="card-container">
+        <mat-card fxFlex="50" class="mat-elevation-z4">
+            <h2 class="card-header">{{selectedTicker}}</h2>
+            <p>Price at open on {{dateAtOpen}}: <b>${{priceAtOpen}}</b></p>
+        </mat-card>
     </div>
 </div>
 
