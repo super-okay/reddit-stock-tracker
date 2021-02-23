@@ -12,10 +12,10 @@
         <button mat-button class="submit-button" (click)="getStockData(selectedTicker)">Get Results</button>
     </div>
 
-    <div fxLayoutAlign="center none" class="card-container">
-        <mat-card fxFlex="50" class="mat-elevation-z4">
-            <h2 class="card-header">{{selectedTicker}}</h2>
-            <p>Price at open on {{dateAtOpen}}: <b>${{priceAtOpen}}</b></p>
+    <div class="card-container" *ngIf="hasLoaded">
+        <mat-card class="mat-elevation-z4">
+            <h2 class="card-header">{{fullName}} (${{submittedTicker}})</h2>
+            <p class="stock-text">Price at market open on <span class="big-text">{{dateAtOpen}}</span> was <span class="big-text">${{priceAtOpen}}</span>.</p>
         </mat-card>
     </div>
 </div>

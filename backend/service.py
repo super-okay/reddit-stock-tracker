@@ -4,6 +4,7 @@ import json
 import config
 
 base_intraday_url = "https://cloud.iexapis.com/stable/stock/{}/intraday-prices?token=" + config.iex_api_key
+base_company_url = "https://cloud.iexapis.com/stable/stock/{}/company?token=" + config.iex_api_key
 
 class Stock:
 
@@ -31,7 +32,14 @@ class Stock:
         # print(data_formatted)
 
         # print(data[0]["average"])
-        return data[0]
+        return data[1]
+
+    def get_full_name(ticker):
+        full_company_url = base_company_url.format(ticker)
+        response = requests.get(full_company_url)
+        data = response.json()
+        full_name = data["companyName"]
+        return full_name
 
     def test():
         return "Stock object in service file."
