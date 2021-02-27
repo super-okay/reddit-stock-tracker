@@ -14,8 +14,11 @@
 
     <div class="card-container" *ngIf="hasLoaded">
         <mat-card class="mat-elevation-z4">
-            <h2 class="card-header">{{fullName}} (${{submittedTicker}})</h2>
-            <p class="stock-text">Price at market open on <span class="big-text">{{dateAtOpen}}</span> was <span class="big-text">${{priceAtOpen}}</span>.</p>
+            <h2 class="card-header">{{fullName}} ({{submittedTicker}})</h2>
+            <p class="stock-text">
+                Price at market open on <span class="big-text">{{dateAtOpen}}</span> was <span class="big-text">${{priceAtOpen}}</span>.<br>
+                {{submittedTicker}} was mentioned {{numRedditPosts}} times on r/wallstreetbets in the past two days.
+            </p>
         </mat-card>
     </div>
 </div>

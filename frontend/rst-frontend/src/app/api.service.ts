@@ -12,9 +12,9 @@ export class ApiService {
 
   constructor(private http:HttpClient) { }
 
-  // gets current price of stock
+  // gets data of selected ticker
   getStockDataAPI(ticker:string) {
-    return this.http.post(this.url+'/price', {ticker: ticker}).pipe(map(
+    return this.http.post(this.url+'/stock-data', {ticker: ticker}).pipe(map(
       (data:any) => {
         return data;
       },
@@ -23,4 +23,17 @@ export class ApiService {
       }
     ))
   }
+
+  // gets reddit data of selected ticker
+  getRedditDataAPI(ticker:string) {
+    return this.http.post(this.url+'/reddit-data', {ticker: ticker}).pipe(map(
+      (data:any) => {
+        return data;
+      },
+      (error:any) => {
+        console.log(error);
+      }
+    ))
+  }
+  
 }

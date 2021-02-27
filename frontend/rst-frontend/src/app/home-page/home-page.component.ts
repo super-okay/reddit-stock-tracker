@@ -8,12 +8,16 @@ import { ApiService } from '../api.service';
 })
 export class HomePageComponent implements OnInit {
 
+  // stock data
   selectedTicker:string = "";
   submittedTicker:string = "";
   dataAtOpen:any;
   fullName:string = "";
   priceAtOpen:string = "";
   dateAtOpen:string = "";
+
+  // reddit data
+  numRedditPosts:number = -1;
 
   hasLoaded:boolean = false;
 
@@ -35,7 +39,16 @@ export class HomePageComponent implements OnInit {
         this.hasLoaded = true;
       },
       (error:any) => {
-        console.log("Error getting stock price: " + error);
+        console.log("Error getting stock data: " + error);
+      }
+    )
+
+    this.apiService.getRedditDataAPI(selectedTicker).subscribe(
+      (data:any) => {
+        this.numRedditPosts = data;
+      },
+      (error:any) => {
+        console.log("Error getting reddit data: " + error)
       }
     )
   }
