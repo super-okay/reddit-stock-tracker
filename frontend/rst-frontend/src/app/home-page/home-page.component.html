@@ -2,14 +2,14 @@
     <h1 class="main-header">Reddit Stock Tracker</h1>
 
     <div class="ticker-container">
-        <div>
-            <mat-form-field class="ticker-input">
-                <mat-label>Ticker</mat-label>
-                <input matInput placeholder="Ex. GME" [(ngModel)]="selectedTicker">
+        <mat-card class="search-border mat-elevation-z4">
+            <mat-form-field class="ticker-input" [floatLabel]="'never'">
+                <!-- <mat-label>Ticker</mat-label> -->
+                <input matInput placeholder="search ticker (ex. GME)" [(ngModel)]="selectedTicker">
                 <span matPrefix>$&nbsp;</span>
             </mat-form-field>
-        </div>
-        <button mat-button class="submit-button" (click)="getStockData(selectedTicker)">Get Results</button>
+            <button mat-button (click)="getStockData(selectedTicker)" class="search-button"><mat-icon>search</mat-icon></button>
+        </mat-card>
     </div>
 
     <div class="card-container" *ngIf="hasLoaded">
@@ -17,7 +17,7 @@
             <h2 class="card-header">{{fullName}} ({{submittedTicker}})</h2>
             <p class="stock-text">
                 Price at market open on <span class="big-text">{{dateAtOpen}}</span> was <span class="big-text">${{priceAtOpen}}</span>.<br>
-                {{submittedTicker}} was mentioned {{numRedditPosts}} times on r/wallstreetbets in the past two days.
+                {{submittedTicker}} was mentioned <span class="big-text">{{numRedditPosts}} times</span> on r/wallstreetbets in the past two days.
             </p>
         </mat-card>
     </div>

@@ -1,11 +1,11 @@
 .main-container {
-    margin-top: 2%;
+    margin-top: 2vh;
 }
 
 .main-header {
     text-align: center;
     font-weight: 500;
-    margin-bottom: 2%;
+    margin-bottom: 2vh;
 }
 
 .ticker-container {
@@ -14,19 +14,22 @@
     text-align: center;
 }
 
-mat-form-field.ticker-input {
-    font-size: 20px;
+.search-border {
+    max-width: 512px;
+    margin: auto;
+    border-radius: 45px;
+    padding: 0;
 }
 
-.submit-button {
-    background-color: green;
-    color: white;
+mat-form-field.ticker-input {
+    font-size: 18px;
+    width: 75%;
 }
 
 .card-container {
     max-width: 1024px;
     margin: auto;
-    margin-top: 2%;
+    margin-top: 4vh;
 }
 
 .card-header {
