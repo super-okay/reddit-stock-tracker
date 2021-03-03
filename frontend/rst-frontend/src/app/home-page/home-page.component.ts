@@ -11,10 +11,15 @@ export class HomePageComponent implements OnInit {
   // stock data
   selectedTicker:string = "";
   submittedTicker:string = "";
-  dataAtOpen:any;
   fullName:string = "";
+
+  dataAtOpen:any;
   priceAtOpen:string = "";
   dateAtOpen:string = "";
+
+  dataAtClose:any;
+  priceAtClose:string = "";
+  dateAtClose:string = "";
 
   // reddit data
   numRedditPosts:number = -1;
@@ -32,10 +37,17 @@ export class HomePageComponent implements OnInit {
       (data:any) => {
         // window.alert(JSON.stringify(data));
         this.submittedTicker = this.selectedTicker;
-        this.dataAtOpen = data;
         this.fullName = data.fullName;
-        this.priceAtOpen = data.open;
-        this.dateAtOpen = data.date;
+
+        // data at open
+        this.dataAtOpen = data.open;
+        this.priceAtOpen = data.open.open;
+        this.dateAtOpen = data.open.date;
+
+        // data at close
+        this.dataAtClose = data.close;
+        this.priceAtClose = data.close.open;
+        
         this.hasLoaded = true;
       },
       (error:any) => {

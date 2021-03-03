@@ -25,14 +25,16 @@ class Stock:
     # }
 
     def get_stock_data(ticker):
+        """ 
+        gets data at open and close of specified ticker
+        returns tuple of data at open, data at close
+        """
         full_intraday_url = base_intraday_url.format(ticker)
         response = requests.get(full_intraday_url)
         data = response.json()
-        # data_formatted = json.dumps(data, indent=2)
-        # print(data_formatted)
-
-        # print(data[0]["average"])
-        return data[1]
+        data_open = data[0]
+        data_close = data[len(data)-1]
+        return data_open, data_close
 
     def get_full_name(ticker):
         full_company_url = base_company_url.format(ticker)

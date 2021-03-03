@@ -13,22 +13,24 @@ CORS(app)
 def stock_data():
     params = request.json
     ticker = params["ticker"]
-    data_at_open = Stock.get_stock_data(ticker)
+    full_data = {}
+    data_open, data_close = Stock.get_stock_data(ticker)
     full_name = Stock.get_full_name(ticker)
-    data_at_open["fullName"] = full_name
+    full_data["open"] = data_open
+    full_data["close"] = data_close
+    full_data["fullName"] = full_name
     print("--------------------")
     print(ticker)
-    print(full_name)
-    print(data_at_open)
+    print(full_data)
     print("--------------------")
-    return jsonify(data_at_open)
+    return jsonify(full_data)
 
 
 @app.route('/reddit-data', methods=['POST'])
 def reddit_data():
     params = request.json
     ticker = params["ticker"]
-    time = "2d"
+    time = "1d"
     num_subs = Reddit.num_subs(ticker, time)
     print("NUMBER OF REDDIT POSTS: " + str(num_subs))
     return jsonify(num_subs)
