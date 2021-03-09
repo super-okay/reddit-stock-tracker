@@ -42,6 +42,3 @@ class Stock:
         data = response.json()
         full_name = data["companyName"]
         return full_name
-
-    def test():
-        return "Stock object in service file."

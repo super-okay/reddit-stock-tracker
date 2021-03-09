@@ -14,16 +14,19 @@ def stock_data():
     params = request.json
     ticker = params["ticker"]
     full_data = {}
-    data_open, data_close = Stock.get_stock_data(ticker)
-    full_name = Stock.get_full_name(ticker)
-    full_data["open"] = data_open
-    full_data["close"] = data_close
-    full_data["fullName"] = full_name
-    print("--------------------")
-    print(ticker)
-    print(full_data)
-    print("--------------------")
-    return jsonify(full_data)
+    try:
+        data_open, data_close = Stock.get_stock_data(ticker)
+        full_name = Stock.get_full_name(ticker)
+        full_data["open"] = data_open
+        full_data["close"] = data_close
+        full_data["fullName"] = full_name
+        print("--------------------")
+        print(ticker)
+        print(full_data)
+        print("--------------------")
+        return jsonify(full_data)
+    except:
+        return jsonify("Invalid ticker")
 
 
 @app.route('/reddit-data', methods=['POST'])

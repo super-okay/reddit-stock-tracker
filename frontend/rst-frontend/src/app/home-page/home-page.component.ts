@@ -9,6 +9,7 @@ import { ApiService } from '../api.service';
 export class HomePageComponent implements OnInit {
 
   // stock data
+  isValidTicker:boolean = true;
   selectedTicker:string = "";
   submittedTicker:string = "";
   fullName:string = "";
@@ -36,19 +37,25 @@ export class HomePageComponent implements OnInit {
     this.apiService.getStockDataAPI(selectedTicker).subscribe(
       (data:any) => {
         // window.alert(JSON.stringify(data));
-        this.submittedTicker = this.selectedTicker;
-        this.fullName = data.fullName;
+        if (typeof data === "string") {
+          this.isValidTicker = false;
+        }
+        else {
+          this.isValidTicker = true;
+          this.submittedTicker = this.selectedTicker.toUpperCase();
+          this.fullName = data.fullName;
 
-        // data at open
-        this.dataAtOpen = data.open;
-        this.priceAtOpen = data.open.open;
-        this.dateAtOpen = data.open.date;
+          // data at open
+          this.dataAtOpen = data.open;
+          this.priceAtOpen = data.open.open;
+          this.dateAtOpen = data.open.date;
 
-        // data at close
-        this.dataAtClose = data.close;
-        this.priceAtClose = data.close.open;
-        
-        this.hasLoaded = true;
+          // data at close
+          this.dataAtClose = data.close;
+          this.priceAtClose = data.close.open;
+          
+          this.hasLoaded = true;
+        }
       },
       (error:any) => {
         console.log("Error getting stock data: " + error);
