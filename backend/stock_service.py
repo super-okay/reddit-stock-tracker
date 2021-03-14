@@ -34,7 +34,18 @@ class Stock:
         data = response.json()
         data_open = data[0]
         data_close = data[len(data)-1]
-        return data_open, data_close
+        price_open = data_open["open"]
+        price_close = data_close["open"]
+
+        price_div = price_close / price_open
+        # percent_change = 0
+        # if price_div > 1:
+        #     percent_change = (price_div - 1) * 100
+        # elif price_div < 1:
+        #     percent_change = (1 - price_div) * 100
+        percent_change = round((price_div - 1) * 100, 2)
+
+        return data_open, data_close, percent_change
 
     def get_full_name(ticker):
         full_company_url = base_company_url.format(ticker)

@@ -22,6 +22,8 @@ export class HomePageComponent implements OnInit {
   priceAtClose:string = "";
   dateAtClose:string = "";
 
+  percentChange:number = 0;
+
   // reddit data
   numRedditPosts:number = -1;
 
@@ -53,6 +55,9 @@ export class HomePageComponent implements OnInit {
           // data at close
           this.dataAtClose = data.close;
           this.priceAtClose = data.close.open;
+
+          // price percentage change
+          this.percentChange = data.percentChange;
           
           this.hasLoaded = true;
         }

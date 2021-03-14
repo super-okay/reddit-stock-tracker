@@ -15,11 +15,12 @@ def stock_data():
     ticker = params["ticker"]
     full_data = {}
     try:
-        data_open, data_close = Stock.get_stock_data(ticker)
+        data_open, data_close, percent_change = Stock.get_stock_data(ticker)
         full_name = Stock.get_full_name(ticker)
         full_data["open"] = data_open
         full_data["close"] = data_close
         full_data["fullName"] = full_name
+        full_data["percentChange"] = percent_change
         print("--------------------")
         print(ticker)
         print(full_data)
