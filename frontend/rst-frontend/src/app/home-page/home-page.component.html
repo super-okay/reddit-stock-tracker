@@ -22,7 +22,7 @@
             <p class="stock-text">
                 Price at market open on <span class="big-text">{{dateAtOpen}}</span> was <span class="big-text">${{priceAtOpen}}</span>.<br>
                 Price at market close on <span class="big-text">{{dateAtOpen}}</span> was <span class="big-text">${{priceAtClose}}</span>.<br>
-                Percent change over the day was <span class="big-text">{{percentChange}}%</span>.<br>
+                Percent change over the day was <span [ngClass]="{'red-text':percentChange < 0, 'green-text':percentChange>=0}">{{percentChange}}%</span>.<br>
                 <span class="big-text">{{numRedditPosts}}</span> posts on r/wallstreetbets mention {{submittedTicker}} in the past day.
             </p>
         </mat-card>
