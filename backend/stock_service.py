@@ -1,5 +1,6 @@
 import requests
 import json
+from datetime import datetime
 
 import config
 
@@ -27,7 +28,7 @@ class Stock:
     def get_stock_data(ticker):
         """ 
         gets data at open and close of specified ticker
-        returns tuple of data at open, data at close
+        returns tuple of data at open, data at close, and intraday percent change
         """
         full_intraday_url = base_intraday_url.format(ticker)
         response = requests.get(full_intraday_url)
@@ -35,19 +36,23 @@ class Stock:
         data_open = data[0]
         data_close = data[len(data)-1]
         price_open = data_open["open"]
-        price_close = data_close["open"]
+        price_close = data_close["close"]
 
+        # change date format
+        date = data_open["date"]
+        date_obj = datetime.strptime(date, "%Y-%m-%d")
+        formatted_date = date_obj.strftime("%B %d, %Y")
+        data_open["date"] = formatted_date
+        data_close["date"] = formatted_date
+
+        # calculate intraday price change percentage
         price_div = price_close / price_open
-        # percent_change = 0
-        # if price_div > 1:
-        #     percent_change = (price_div - 1) * 100
-        # elif price_div < 1:
-        #     percent_change = (1 - price_div) * 100
         percent_change = round((price_div - 1) * 100, 2)
 
         return data_open, data_close, percent_change
 
     def get_full_name(ticker):
+        """ returns full name string """
         full_company_url = base_company_url.format(ticker)
         response = requests.get(full_company_url)
         data = response.json()

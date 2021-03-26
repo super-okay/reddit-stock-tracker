@@ -54,7 +54,7 @@ export class HomePageComponent implements OnInit {
 
           // data at close
           this.dataAtClose = data.close;
-          this.priceAtClose = data.close.open;
+          this.priceAtClose = data.close.close;
 
           // price percentage change
           this.percentChange = data.percentChange;
