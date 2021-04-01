@@ -35,8 +35,17 @@ class Stock:
         data = response.json()
         data_open = data[0]
         data_close = data[len(data)-1]
-        price_open = data_open["open"]
-        price_close = data_close["close"]
+
+        # round prices to two decimal places
+        price_open_open = data_open["open"]
+        price_open_close = data_open["close"]
+        data_open["open"] = round(price_open_open, 2)
+        data_open["close"] = round(price_open_close, 2)
+
+        price_close_open = data_close["open"]
+        price_close_close = data_close["close"]
+        data_close["open"] = round(price_close_open, 2)
+        data_close["close"] = round(price_close_close, 2)
 
         # change date format
         date = data_open["date"]
@@ -46,7 +55,9 @@ class Stock:
         data_close["date"] = formatted_date
 
         # calculate intraday price change percentage
-        price_div = price_close / price_open
+        price_at_open = data_open["open"]
+        price_at_close = data_close["close"]
+        price_div = price_at_close / price_at_open
         percent_change = round((price_div - 1) * 100, 2)
 
         return data_open, data_close, percent_change

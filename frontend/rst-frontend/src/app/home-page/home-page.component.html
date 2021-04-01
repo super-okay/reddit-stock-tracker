@@ -1,8 +1,10 @@
 <div class="main-container">
-    <h1 class="main-header">Reddit Stock Tracker</h1>
+    <!-- <h1 class="main-header">Reddit Stock Tracker</h1> -->
 
-    <div class="ticker-container">
-        <mat-card class="search-border mat-elevation-z4">
+    <div class="header-container">
+        <h1 class="main-header" fxFlex="30">Reddit Stock Tracker</h1>
+        <div fxFlex="15"></div>
+        <mat-card class="search-border mat-elevation-z2" fxFlex>
             <mat-form-field class="ticker-input" [floatLabel]="'never'">
                 <!-- <mat-label>Ticker</mat-label> -->
                 <input matInput placeholder="search ticker (ex. GME)" [(ngModel)]="selectedTicker">
@@ -13,17 +15,17 @@
     </div>
 
     <div class="card-container">
-        <mat-card class="mat-elevation-z4" *ngIf="!isValidTicker">
+        <mat-card class="mat-elevation-z3" *ngIf="!isValidTicker">
             Invalid ticker.
         </mat-card>
 
-        <mat-card class="mat-elevation-z4" *ngIf="isValidTicker && hasLoaded">
+        <mat-card class="mat-elevation-z3" *ngIf="isValidTicker && hasLoaded">
             <h2 class="card-header">{{fullName}} ({{submittedTicker}})</h2>
             <p class="stock-text">
                 Price at market open on <span class="big-text">{{dateAtOpen}}</span> was <span class="big-text">${{priceAtOpen}}</span>.<br>
                 Price at market close on <span class="big-text">{{dateAtOpen}}</span> was <span class="big-text">${{priceAtClose}}</span>.<br>
                 <span [ngClass]="{'red-text':percentChange < 0, 'green-text':percentChange>=0}">{{percentChange}}%</span> change intraday.<br>
-                <span class="big-text">{{numRedditPosts}}</span> posts on r/wallstreetbets mention {{submittedTicker}} in the past day.
+                <span class="big-text">{{numRedditPosts}}</span> post(s) on r/wallstreetbets mention {{submittedTicker}} in the past day.
             </p>
         </mat-card>
     </div>

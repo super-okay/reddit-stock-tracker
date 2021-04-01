@@ -3,31 +3,29 @@
 }
 
 .main-header {
-    text-align: center;
     font-weight: 500;
-    margin-bottom: 2vh;
 }
 
-.ticker-container {
+.header-container {
     margin: auto;
-    // width: 100%;
     text-align: center;
+    max-width: 800px;
 }
 
 .search-border {
-    max-width: 512px;
     margin: auto;
     border-radius: 45px;
     padding: 0;
+    text-align: center;
 }
 
 mat-form-field.ticker-input {
-    font-size: 18px;
-    width: 75%;
+    font-size: 16px;
+    width: 70%;
 }
 
 .card-container {
-    max-width: 1024px;
+    max-width: 800px;
     margin: auto;
     margin-top: 4vh;
 }
