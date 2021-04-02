@@ -68,7 +68,18 @@ $rst-frontend-theme: mat-light-theme((
 // that you are using.
 @include angular-material-theme($rst-frontend-theme);
 
-/* You can add global styles to this file, and also import other style files */
+// adding custom shadows
+.custom-shadow {
+  @include mat-elevation(8, #ffffff, 1)
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// regular global css
+html, body { 
+  height: 100%; 
+  background-color: rgb(49, 49, 49);
+}
+
+body {
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
