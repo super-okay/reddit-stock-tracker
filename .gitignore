@@ -1,2 +1,5 @@
 backend/venv
 backend/config.py
+backend/rst-env/
+backend/__pycache__/
+**/__pycache__

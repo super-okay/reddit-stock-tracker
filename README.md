@@ -14,10 +14,21 @@ npm start
 ```
 
 ## Backend
-Flask.
+Python Flask.
 
+
+For first time environment setup, create a new Python virtual environment and install all packages specified in `requirements.txt`.
 ```
 cd backend
-source venv/bin/activate
+python3 -m venv rst-env
+source rst-env/bin/activate
+python3 -m pip install -r requirements.txt
+python3 -m flask run
+```
+
+If the virtual environment already exists and all packages are installed, simply start the environment and run.
+```
+cd backend
+source rst-env/bin/activate
 python3 -m flask run
 ```
