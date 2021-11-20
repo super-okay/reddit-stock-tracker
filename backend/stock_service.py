@@ -1,13 +1,21 @@
 import requests
 import json
+import os
 from datetime import datetime
+from dotenv import load_dotenv
 
-import config
+# load_dotenv()
 
-base_intraday_url = "https://cloud.iexapis.com/stable/stock/{}/intraday-prices?token=" + config.iex_api_key
-base_company_url = "https://cloud.iexapis.com/stable/stock/{}/company?token=" + config.iex_api_key
+# base_intraday_url = "https://cloud.iexapis.com/stable/stock/{}/intraday-prices?token=" + os.getenv("IEX_API_KEY")
+# base_company_url = "https://cloud.iexapis.com/stable/stock/{}/company?token=" + os.getenv("IEX_API_KEY")
 
 class Stock:
+
+    def __init__(self):
+        load_dotenv()
+        self.base_intraday_url = "https://cloud.iexapis.com/stable/stock/{}/intraday-prices?token=" + os.getenv("IEX_API_KEY")
+        self.base_company_url = "https://cloud.iexapis.com/stable/stock/{}/company?token=" + os.getenv("IEX_API_KEY")
+
 
     # Example item in list
     #
@@ -25,12 +33,12 @@ class Stock:
     #     "numberOfTrades": 111
     # }
 
-    def get_stock_data(ticker):
+    def get_stock_data(self, ticker):
         """ 
         gets data at open and close of specified ticker
         returns tuple of data at open, data at close, and intraday percent change
         """
-        full_intraday_url = base_intraday_url.format(ticker)
+        full_intraday_url = self.base_intraday_url.format(ticker)
         response = requests.get(full_intraday_url)
         data = response.json()
         data_open = data[0]
@@ -62,9 +70,9 @@ class Stock:
 
         return data_open, data_close, percent_change
 
-    def get_full_name(ticker):
+    def get_full_name(self, ticker):
         """ returns full name string """
-        full_company_url = base_company_url.format(ticker)
+        full_company_url = self.base_company_url.format(ticker)
         response = requests.get(full_company_url)
         data = response.json()
         full_name = data["companyName"]

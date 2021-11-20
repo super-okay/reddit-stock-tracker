@@ -15,8 +15,9 @@ def stock_data():
     ticker = params["ticker"]
     full_data = {}
     try:
-        data_open, data_close, percent_change = Stock.get_stock_data(ticker)
-        full_name = Stock.get_full_name(ticker)
+        stock = Stock()
+        data_open, data_close, percent_change = stock.get_stock_data(ticker)
+        full_name = stock.get_full_name(ticker)
         full_data["open"] = data_open
         full_data["close"] = data_close
         full_data["fullName"] = full_name
@@ -35,7 +36,8 @@ def reddit_data():
     params = request.json
     ticker = params["ticker"]
     time = "1d"
-    num_subs = Reddit.num_subs(ticker, time)
+    reddit = Reddit()
+    num_subs = reddit.num_subs(ticker, time)
     print("NUMBER OF REDDIT POSTS: " + str(num_subs))
     return jsonify(num_subs)
 
