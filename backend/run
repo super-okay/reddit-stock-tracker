@@ -1,2 +1,2 @@
-source venv/bin/activate
+source rst-env/bin/activate
 python3 -m flask run

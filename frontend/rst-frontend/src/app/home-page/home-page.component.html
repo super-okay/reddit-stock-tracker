@@ -7,7 +7,7 @@
         <mat-card class="search-box mat-elevation-z10 custom-shadow" fxFlex>
             <mat-form-field class="ticker-input" [floatLabel]="'never'">
                 <!-- <mat-label>Ticker</mat-label> -->
-                <input matInput placeholder="search ticker (ex. GME)" [(ngModel)]="selectedTicker">
+                <input matInput placeholder="search ticker (ex. GME)" [(ngModel)]="selectedTicker" (keyup.enter)="getStockData(selectedTicker)">
                 <span matPrefix>$&nbsp;</span>
             </mat-form-field>
             <button mat-button (click)="getStockData(selectedTicker)" class="search-button"><mat-icon>search</mat-icon></button>

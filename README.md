@@ -32,3 +32,9 @@ cd backend
 source rst-env/bin/activate
 python3 -m flask run
 ```
+
+For simplicity, you can also run
+```
+cd backend
+./run
+```
